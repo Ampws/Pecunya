@@ -1,0 +1,556 @@
+
+Type: Collection
+  Field: address
+  Field: description
+  Field: name
+  Field: symbol
+  Field: circulatingSupply
+  Field: totalSupply
+  Field: slug
+  Field: externalUrl
+  Field: twitterUsername
+  Field: baseTokenUri
+  Field: ohlcvChart
+  Field: tokenEvents
+  Field: contract
+  Field: attributes
+  Field: orderHistory
+  Field: sales
+  Field: wallets
+  Field: openseaMetadata
+  Field: image
+  Field: bannerImage
+Type: CollectionAttribute
+  Field: name
+  Field: value
+Type: CollectionAttributesConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: CollectionAttributesConnectionEdge
+  Field: node
+  Field: cursor
+Type: CollectionOHLCVChart
+  Field: average
+  Field: close
+  Field: count
+  Field: high
+  Field: low
+  Field: open
+  Field: volume
+  Field: timestamp
+Type: CollectionOrderHistory
+  Field: fromAddress
+  Field: toAddress
+  Field: priceInNativeToken
+  Field: timestamp
+  Field: transactionHash
+  Field: tokenId
+Type: CollectionSale
+  Field: estimatedConfirmedAt
+  Field: priceInNativeToken
+  Field: quantitySold
+Type: CollectionSalesConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: CollectionSalesConnectionEdge
+  Field: node
+  Field: cursor
+Type: CollectionStats
+  Field: totalSales
+  Field: averageInNativeToken
+  Field: ceilingInNativeToken
+  Field: floorInNativeToken
+  Field: volumeInNativeToken
+Type: CollectionTokenEventsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: CollectionTokenEventsConnectionEdge
+  Field: node
+  Field: cursor
+Type: CollectionWalletsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: CollectionWalletsConnectionEdge
+  Field: node
+  Field: cursor
+Type: Contract
+  Field: abi
+  Field: address
+  Field: name
+  Field: symbol
+  Field: supportedErcInterfaces
+  Field: isVerified
+  Field: tokenEvents
+Type: ContractsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: ContractsEdge
+  Field: node
+  Field: cursor
+Type: ContractTokenEventsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: ContractTokenEventsConnectionEdge
+  Field: node
+  Field: cursor
+Type: ERC1155Collection
+  Field: address
+  Field: description
+  Field: name
+  Field: symbol
+  Field: circulatingSupply
+  Field: totalSupply
+  Field: slug
+  Field: externalUrl
+  Field: twitterUsername
+  Field: baseTokenUri
+  Field: ohlcvChart
+  Field: tokenEvents
+  Field: contract
+  Field: attributes
+  Field: orderHistory
+  Field: sales
+  Field: wallets
+  Field: openseaMetadata
+  Field: image
+  Field: bannerImage
+  Field: stats
+  Field: nft
+  Field: nfts
+Type: ERC1155CollectionTokensConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: ERC1155CollectionTokensEdge
+  Field: node
+  Field: cursor
+Type: ERC1155NFT
+  Field: contractAddress
+  Field: name
+  Field: tokenId
+  Field: animationUrl
+  Field: externalUrl
+  Field: metadata
+  Field: collectionSlug
+  Field: description
+  Field: tokenEvents
+  Field: contract
+  Field: collection
+  Field: uploads
+  Field: wallets
+Type: ERC1155NFTWalletsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: ERC1155NFTWalletsConnectionEdge
+  Field: node
+  Field: cursor
+Type: ERC721Collection
+  Field: address
+  Field: description
+  Field: name
+  Field: symbol
+  Field: circulatingSupply
+  Field: totalSupply
+  Field: slug
+  Field: externalUrl
+  Field: twitterUsername
+  Field: baseTokenUri
+  Field: ohlcvChart
+  Field: tokenEvents
+  Field: contract
+  Field: attributes
+  Field: orderHistory
+  Field: sales
+  Field: wallets
+  Field: openseaMetadata
+  Field: image
+  Field: bannerImage
+  Field: stats
+  Field: nft
+  Field: nfts
+Type: ERC721CollectionTokensConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: ERC721CollectionTokensEdge
+  Field: node
+  Field: cursor
+Type: ERC721NFT
+  Field: contractAddress
+  Field: name
+  Field: tokenId
+  Field: animationUrl
+  Field: externalUrl
+  Field: metadata
+  Field: collectionSlug
+  Field: description
+  Field: tokenEvents
+  Field: contract
+  Field: collection
+  Field: uploads
+  Field: wallet
+  Field: attributes
+Type: EVMSchemaType
+  Field: trendingCollections
+  Field: walletByENS
+  Field: walletByAddress
+  Field: tokenEvents
+  Field: contracts
+  Field: contract
+  Field: collections
+  Field: collection
+  Field: gasPrices
+  Field: nft
+  Field: transactions
+  Field: transaction
+Type: EVMSchemaTypeCollectionsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: EVMSchemaTypeCollectionsConnectionEdge
+  Field: node
+  Field: cursor
+Type: EVMSchemaTypeTokenEventsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: EVMSchemaTypeTokenEventsConnectionEdge
+  Field: node
+  Field: cursor
+Type: EVMSchemaTypeTransactionsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: EVMSchemaTypeTransactionsConnectionEdge
+  Field: node
+  Field: cursor
+Type: EVMSchemaTypeTrendingCollectionsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: EVMSchemaTypeTrendingCollectionsConnectionEdge
+  Field: node
+  Field: cursor
+Type: GasPrice
+  Field: blockNumber
+  Field: total
+  Field: average
+  Field: ceiling
+  Field: floor
+  Field: median
+Type: NFT
+  Field: contractAddress
+  Field: name
+  Field: tokenId
+  Field: animationUrl
+  Field: externalUrl
+  Field: metadata
+  Field: collectionSlug
+  Field: description
+  Field: tokenEvents
+  Field: contract
+  Field: collection
+  Field: uploads
+Type: NFTContract
+  Field: abi
+  Field: address
+  Field: name
+  Field: symbol
+  Field: supportedErcInterfaces
+  Field: isVerified
+  Field: tokenEvents
+  Field: collection
+Type: NFTTokenEventsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: NFTTokenEventsConnectionEdge
+  Field: node
+  Field: cursor
+Type: NFTWallet
+  Field: walletAddress
+  Field: owner
+Type: OpenSeaMetadata
+  Field: unsafeSlug
+  Field: isVerified
+  Field: isHidden
+Type: PageInfo
+  Field: hasNextPage
+  Field: hasPreviousPage
+  Field: startCursor
+  Field: endCursor
+Type: Query
+  Field: ethereum
+  Field: ethereumSepolia
+  Field: polygon
+Type: TokenAttribute
+  Field: name
+  Field: value
+Type: TokenBurnEvent
+  Field: blockNumber
+  Field: transactionHash
+  Field: transferIndex
+  Field: timestamp
+  Field: type
+  Field: fromAddress
+  Field: toAddress
+  Field: from
+  Field: to
+  Field: transaction
+  Field: contractAddress
+  Field: contractERCStandard
+  Field: tokenId
+  Field: tokenQuantity
+  Field: contract
+  Field: nft
+Type: TokenContract
+  Field: abi
+  Field: address
+  Field: name
+  Field: symbol
+  Field: supportedErcInterfaces
+  Field: isVerified
+  Field: tokenEvents
+  Field: decimals
+  Field: details
+Type: TokenDetailsType
+  Field: address
+  Field: name
+  Field: symbol
+  Field: slug
+Type: TokenEvent
+  Field: blockNumber
+  Field: transactionHash
+  Field: transferIndex
+  Field: timestamp
+  Field: type
+  Field: fromAddress
+  Field: toAddress
+  Field: from
+  Field: to
+  Field: transaction
+Type: TokenMintEvent
+  Field: blockNumber
+  Field: transactionHash
+  Field: transferIndex
+  Field: timestamp
+  Field: type
+  Field: fromAddress
+  Field: toAddress
+  Field: from
+  Field: to
+  Field: transaction
+  Field: contractAddress
+  Field: contractERCStandard
+  Field: tokenId
+  Field: tokenQuantity
+  Field: contract
+  Field: nft
+Type: TokenSaleEvent
+  Field: blockNumber
+  Field: transactionHash
+  Field: transferIndex
+  Field: timestamp
+  Field: type
+  Field: fromAddress
+  Field: toAddress
+  Field: from
+  Field: to
+  Field: transaction
+  Field: contractAddress
+  Field: contractERCStandard
+  Field: sentTokenId
+  Field: sentTokenQuantity
+  Field: receivedTokenContractAddress
+  Field: receivedTokenId
+  Field: receivedTokenQuantity
+  Field: marketplace
+  Field: sentTokenContract
+  Field: receivedTokenContract
+  Field: sentNft
+  Field: receivedNft
+Type: TokenSwapEvent
+  Field: blockNumber
+  Field: transactionHash
+  Field: transferIndex
+  Field: timestamp
+  Field: type
+  Field: fromAddress
+  Field: toAddress
+  Field: from
+  Field: to
+  Field: transaction
+  Field: sentTokenContractAddress
+  Field: sentTokenContractERCStandard
+  Field: sentTokenId
+  Field: sentTokenQuantity
+  Field: receivedTokenContractAddress
+  Field: receivedTokenId
+  Field: receivedTokenQuantity
+  Field: sentTokenContract
+  Field: receivedTokenContract
+  Field: sentNft
+  Field: receivedNft
+Type: TokenTransferEvent
+  Field: blockNumber
+  Field: transactionHash
+  Field: transferIndex
+  Field: timestamp
+  Field: type
+  Field: fromAddress
+  Field: toAddress
+  Field: from
+  Field: to
+  Field: transaction
+  Field: contractAddress
+  Field: contractERCStandard
+  Field: tokenId
+  Field: tokenQuantity
+  Field: contract
+  Field: nft
+Type: TokenUpload
+  Field: mimeType
+  Field: height
+  Field: width
+  Field: url
+Type: Transaction
+  Field: blockNumber
+  Field: blockTimestamp
+  Field: contractAddress
+  Field: fromAddress
+  Field: cumulativeGasUsed
+  Field: effectiveGasPrice
+  Field: gas
+  Field: gasPrice
+  Field: gasUsed
+  Field: hash
+  Field: maxFeePerGas
+  Field: maxPriorityFeePerGas
+  Field: toAddress
+  Field: type
+  Field: input
+  Field: transactionIndex
+  Field: value
+Type: TrendingCollection
+  Field: collection
+  Field: stats
+Type: TrendingCollectionStats
+  Field: totalSales
+  Field: averageInNativeToken
+  Field: ceilingInNativeToken
+  Field: floorInNativeToken
+  Field: volumeInNativeToken
+Type: UnclassifiedContract
+  Field: abi
+  Field: address
+  Field: name
+  Field: symbol
+  Field: supportedErcInterfaces
+  Field: isVerified
+  Field: tokenEvents
+Type: Wallet
+  Field: address
+  Field: ensName
+  Field: walletCollection
+  Field: walletCollections
+  Field: tokenEvents
+  Field: transactions
+  Field: walletNFT
+  Field: walletNFTs
+  Field: tokenBalances
+Type: WalletCollection
+  Field: collectionAddress
+  Field: nftsCount
+  Field: collection
+Type: WalletNFT
+  Field: nftsCount
+  Field: nft
+Type: WalletNFTsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: WalletNFTsConnectionEdge
+  Field: node
+  Field: cursor
+Type: WalletTokenBalance
+  Field: totalBalance
+  Field: contractAddress
+  Field: contract
+Type: WalletTokenBalancesConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: WalletTokenBalancesConnectionEdge
+  Field: node
+  Field: cursor
+Type: WalletTokenEventsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: WalletTokenEventsConnectionEdge
+  Field: node
+  Field: cursor
+Type: WalletTransactionsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: WalletTransactionsEdge
+  Field: node
+  Field: cursor
+Type: WalletWalletCollectionsConnection
+  Field: pageInfo
+  Field: edges
+  Field: totalCount
+Type: WalletWalletCollectionsConnectionEdge
+  Field: node
+  Field: cursor
+Type: __Schema
+  Field: description
+  Field: types
+  Field: queryType
+  Field: mutationType
+  Field: subscriptionType
+  Field: directives
+Type: __Type
+  Field: kind
+  Field: name
+  Field: description
+  Field: specifiedByURL
+  Field: fields
+  Field: interfaces
+  Field: possibleTypes
+  Field: enumValues
+  Field: inputFields
+  Field: ofType
+Type: __Field
+  Field: name
+  Field: description
+  Field: args
+  Field: type
+  Field: isDeprecated
+  Field: deprecationReason
+Type: __InputValue
+  Field: name
+  Field: description
+  Field: type
+  Field: defaultValue
+  Field: isDeprecated
+  Field: deprecationReason
+Type: __EnumValue
+  Field: name
+  Field: description
+  Field: isDeprecated
+  Field: deprecationReason
+Type: __Directive
+  Field: name
+  Field: description
+  Field: isRepeatable
+  Field: locations
+  Field: args
