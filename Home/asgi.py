@@ -5,7 +5,7 @@ from django.core.asgi import get_asgi_application
 
 from BlockchainListener.routing import websocket_urlpatterns as BlockchainListener_websocket_urlpatterns
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Jinbo_Network-Backend.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Home.settings')
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
     'websocket': AuthMiddlewareStack(

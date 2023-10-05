@@ -251,7 +251,7 @@ RPC_URLS = {
     'RPC_BSC': config.get('quicknode', 'RPC_BSC').replace('https://', '').replace('wss://', ''),
 }
 
-ROOT_URLCONF = 'Jinbo_Network-Backend.urls'
+ROOT_URLCONF = 'Home.urls'
 
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_SECONDS = 3600
