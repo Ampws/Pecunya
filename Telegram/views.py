@@ -62,7 +62,7 @@ class TelegramBotView(View):
                 print('test4')
                 await self.listener.unsubscribe()
                 print('test5')
-
+#
         if command in menu:
             response_message = self.lang_utils.translate(language_code, command[1:])
             return response_message.encode('utf-8').decode('unicode-escape')
