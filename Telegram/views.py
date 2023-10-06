@@ -7,6 +7,7 @@ from django.views.decorators.http import require_POST
 from django.views import View
 from telegram import Bot, KeyboardButton, ReplyKeyboardMarkup, Update
 
+from BlockchainListener.blockchain_listener import BlockchainListener
 from Utils.language_utils import LanguageUtils
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -21,6 +22,7 @@ class TelegramBotView(View):
             'zh-hans': ['/开始', '/帮助', '/测试1', '/测试2']
         }
         self.lang_utils = LanguageUtils()
+        self.listener = BlockchainListener()
 
     async def post(self, request):
         data = json.loads(request.body.decode('utf-8'))
@@ -39,7 +41,7 @@ class TelegramBotView(View):
 
         return JsonResponse({'status': 'ok'})
 
-    def process_message(self, user_message, language_code):
+    async def process_message(self, user_message, language_code):
         first_space_index = user_message.find(' ')
 
         if first_space_index != -1:
@@ -50,6 +52,16 @@ class TelegramBotView(View):
             message = ""
 
         menu = self.menus.get(language_code, [])
+
+        if command == '/start':
+            if message == 'start':
+                print('test2')
+                await self.listener.listen_to_blockchain()
+                print('test3')
+            if message == 'stop':
+                print('test4')
+                await self.listener.unsubscribe()
+                print('test5')
 
         if command in menu:
             response_message = self.lang_utils.translate(language_code, command[1:])
