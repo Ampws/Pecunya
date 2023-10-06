@@ -1,4 +1,3 @@
-import threading
 from django.urls import path, include
 
 urlpatterns = [
