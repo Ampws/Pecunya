@@ -67,15 +67,9 @@ class TelegramBotView(View):
                 print('test4')
                 await self.run_listener_in_background(self.listener.unsubscribe)
                 print('test5')
-
-        if command in menu:
-            response_message = self.lang_utils.translate(language_code, command[1:])
-            return response_message.encode('utf-8').decode('unicode-escape'), None
-        else:
-            combined_keyboard = [menu, [message]]
-            reply_markup = ReplyKeyboardMarkup(combined_keyboard, one_time_keyboard=True)
-
-            response_message = self.lang_utils.translate(language_code, message)
-            
+        elif command == '/help':
+            response_message = self.lang_utils.translate(language_code, 'help')
+            reply_markup = ReplyKeyboardMarkup(menu, one_time_keyboard=True)
             return response_message.encode('utf-8').decode('unicode-escape'), reply_markup
-
+        else:
+            return response_message.encode('utf-8').decode('unicode-escape'), None
