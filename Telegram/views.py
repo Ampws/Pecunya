@@ -69,7 +69,7 @@ class TelegramBotView(View):
                 print('test5')
         elif command == '/help':
             response_message = self.lang_utils.translate(language_code, 'help')
-            reply_markup = ReplyKeyboardMarkup(menu, one_time_keyboard=True)
+            reply_markup = ReplyKeyboardMarkup([[KeyboardButton(item) for item in menu]], one_time_keyboard=True)
             return response_message.encode('utf-8').decode('unicode-escape'), reply_markup
         else:
             response_message = self.lang_utils.translate(language_code, 'help')
