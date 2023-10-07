@@ -38,7 +38,7 @@ class TelegramBotView(View):
 
             response_message = await self.process_message(user_message, language_code)
 
-            # await update.message.reply_text(response_message)
+            await update.message.reply_text(response_message)
 
         return JsonResponse({'status': 'ok'})
 
