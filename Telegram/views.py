@@ -1,3 +1,4 @@
+import asyncio
 import json
 from django.conf import settings
 from django.http import JsonResponse
@@ -35,11 +36,15 @@ class TelegramBotView(View):
             print('test1')
             user_message = update.message.text
 
-            response_message = self.process_message(user_message, language_code)
+            response_message = await self.process_message(user_message, language_code)
 
-            await update.message.reply_text(response_message)
+            # await update.message.reply_text(response_message)
 
         return JsonResponse({'status': 'ok'})
+
+    async def run_listener_in_background(self, listener_func):
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, listener_func)
 
     async def process_message(self, user_message, language_code):
         first_space_index = user_message.find(' ')
@@ -56,16 +61,16 @@ class TelegramBotView(View):
         if command == '/start':
             if message == 'start':
                 print('test2')
-                await self.listener.listen_to_blockchain()
+                await self.run_listener_in_background(self.listener.listen_to_blockchain)
                 print('test3')
             if message == 'stop':
                 print('test4')
-                await self.listener.unsubscribe()
+                await self.run_listener_in_background(self.listener.unsubscribe)
                 print('test5')
-#
+
         if command in menu:
             response_message = self.lang_utils.translate(language_code, command[1:])
-            return response_message.encode('utf-8').decode('unicode-escape')
+            return response_message.encode('utf-8').decode('unicode-escape'), None
         else:
             combined_keyboard = [menu, [message]]
             reply_markup = ReplyKeyboardMarkup(combined_keyboard, one_time_keyboard=True)
