@@ -72,4 +72,5 @@ class TelegramBotView(View):
             reply_markup = ReplyKeyboardMarkup(menu, one_time_keyboard=True)
             return response_message.encode('utf-8').decode('unicode-escape'), reply_markup
         else:
+            response_message = self.lang_utils.translate(language_code, 'help')
             return response_message.encode('utf-8').decode('unicode-escape'), None
