@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'Auth',
-    'BlockchainListener.apps.BlockchainlistenerConfig',
+    # 'BlockchainListener.apps.BlockchainlistenerConfig',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django.contrib.auth',
@@ -105,7 +105,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'Telegram',
-    'TokenInsight'
+    # 'TokenInsight'
 ]
 
 MIDDLEWARE = [
