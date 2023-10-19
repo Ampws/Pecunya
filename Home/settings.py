@@ -90,20 +90,20 @@ EMAIL_USE_SSL = True
 # }
 
 INSTALLED_APPS = [
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'Auth',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'Auth',
     # 'BlockchainListener.apps.BlockchainlistenerConfig',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
-    'django.contrib.auth',
+    # 'dj_rest_auth',
+    # 'dj_rest_auth.registration',
+    # 'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework',
+    # 'rest_framework.authtoken',
     'Telegram',
     # 'TokenInsight'
 ]
