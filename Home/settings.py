@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'Auth',
-    # 'BlockchainListener.apps.BlockchainlistenerConfig',
+    'BlockchainListener',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django.contrib.auth',
