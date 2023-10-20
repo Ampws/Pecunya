@@ -1,4 +1,5 @@
 import logging
+import asyncio
 from django.conf import settings
 from web3 import AsyncWeb3
 from web3.providers import WebsocketProviderV2
@@ -8,6 +9,7 @@ class BlockchainListener(object):
         self.bsc_rpc_wss = f'wss://{settings.RPC_URLS.get("RPC_BSC")}'
         self.logger = logging.getLogger(__name__)
         self.subscription_id = None
+        self.shutdown = asyncio.Event()
 
     async def listen_to_blockchain(self):
         async with AsyncWeb3.persistent_websocket(WebsocketProviderV2(self.bsc_rpc_wss)) as w3:
@@ -25,6 +27,8 @@ class BlockchainListener(object):
                     if self.should_cancel_subscription(response):
                         unsubscribed = await w3.eth.unsubscribe(self.subscription_id)
                         break
+                
+                await asyncio.sleep(0.1)
 
     def handle_new_pending_transaction(self, event_data):
         print(f"New pending transaction: {event_data}")
