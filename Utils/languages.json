@@ -1,0 +1,14 @@
+{
+    "en-us": {
+        "Balance": "Balance",
+        "Close": "Close"
+    },
+    "zh-cn": {
+        "Balance": "余额",
+        "Close": "关闭"
+    },
+    "zh-hans": {
+        "Balance": "餘額",
+        "Close": "關閉"
+    }
+}
