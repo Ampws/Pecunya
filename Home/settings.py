@@ -248,7 +248,7 @@ REST_FRAMEWORK = {
 }
 
 RPC_URLS = {
-    'RPC_BSC': config.get('quicknode', 'RPC_BSC').replace('https://', '').replace('wss://', ''),
+    'RPC_ERC': config.get('quicknode', 'RPC_ERC').replace('https://', '').replace('wss://', ''),
 }
 
 ROOT_URLCONF = 'Home.urls'

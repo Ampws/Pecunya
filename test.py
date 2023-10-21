@@ -1,7 +1,14 @@
 from web3 import Web3
 
 # 连接到以太坊节点
-# w3 = Web3(Web3.HTTPProvider('https://weathered-multi-sky.bsc.discover.quiknode.pro/fe83dcbbff5d28b5c5f5623093e8330dfcca9960/'))
+RPC = 'https://radial-alpha-borough.discover.quiknode.pro/7fe337be1bf0dea3bcd2a91b2fa541de8c6c487f/'
+w3 = Web3(Web3.HTTPProvider(RPC))
+
+block_number = 0x118afe4
+block_detail = w3.eth.get_block(block_number, full_transactions=True)
+
+for transaction in block_detail['transactions']:
+    print(list(transaction.keys()))
 
 # 交易哈希
 # tx_hash = '0x182227bccbc79099cfc25ad700c6864e238c9376d6b47688cce01e41adb53754'
@@ -18,12 +25,6 @@ from web3 import Web3
 # hash = Web3.keccak(text='transfer(address, uint256)').hex()
 # hash = Web3.keccak(text='approve(address,uint256)').hex()
 # hash = Web3.keccak(text='Transfer(address,address,uint256)').hex()
-hash = Web3.keccak(text='setMaxTxnAmount(uint256)').hex()
+# hash = Web3.keccak(text='setMaxTxnAmount(uint256)').hex()
 # hash = Web3.keccak(text='OwnershipTransferred(address,address)').hex()
-print(hash)
-
-import re
-url = 'socks5://biao0588:biao1013@hk10b.amazonip.net:61884'
-print(re.match(r'socks5://(?:\S+:\S+@)?\S+:\d+', url))
-if re.match(r'socks5://(?:\S+:\S+@)?\S+:\d+', url):
-    print(1)
+# print(hash)

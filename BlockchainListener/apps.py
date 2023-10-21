@@ -17,6 +17,8 @@ class BlockchainlistenerConfig(AppConfig):
     name = 'BlockchainListener'
 
     def ready(self):
-        thread = threading.Thread(target=run_async_code)
-        thread.daemon = True
-        thread.start()
+        if not hasattr(self, 'listener_started'):
+            self.listener_started = True
+            thread = threading.Thread(target=run_async_code)
+            thread.daemon = True
+            thread.start()
