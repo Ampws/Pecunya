@@ -104,7 +104,7 @@ class BlockchainListener(object):
     @staticmethod
     def bytes_to_hex(b):
         return Web3.to_hex(b)
-
+    
     def should_trigger_token_signal(self, event_data):
         return False
 

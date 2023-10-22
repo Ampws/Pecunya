@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start_celery() {
-    celery -A Pecunya worker --loglevel=info &
+    celery -A Pecunya.Home worker --loglevel=info &
 }
 
 start_django() {
