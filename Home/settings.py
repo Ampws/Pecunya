@@ -70,8 +70,8 @@ DATABASES = {
         'OPTIONS': {
             'ssl': {
                 'ca': config.get('mysql', 'CA_PATH'),
-                # 'cert': config.get('mysql', 'CERT_PATH'),
-                # 'key': config.get('mysql', 'KEY_PATH')
+                'cert': config.get('mysql', 'CERT_PATH'),
+                'key': config.get('mysql', 'KEY_PATH')
             }
         },
     }
