@@ -2,8 +2,6 @@
 
 start_celery() {
     celery -A Home worker --loglevel=debug &
-    sleep 10
-    celery -A Home call CeleryTasks.tasks.listen_to_blockchain_task &
 }
 
 start_django() {
