@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start_celery() {
-    celery -A Home worker --loglevel=debug &
+    celery -A Home worker --loglevel=info &
 }
 
 start_django() {
