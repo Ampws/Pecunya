@@ -6,3 +6,4 @@ config.ini
 **/migrations
 test*
 /mysql_cert/*
+/logs/*
