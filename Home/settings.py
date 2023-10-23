@@ -76,7 +76,7 @@ DATABASES = {
         },
     }
 }
-
+#
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FROM_EMAIL = config.get('email', 'DEFAULT_FROM_EMAIL')
