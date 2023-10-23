@@ -67,13 +67,13 @@ DATABASES = {
         'PASSWORD': config.get('mysql', 'PASSWORD'),
         'HOST': config.get('mysql', 'HOST'),
         'PORT': config.get('mysql', 'PORT'),
-        'OPTIONS': {
-            'ssl': {
-                'ca': config.get('mysql', 'CA_PATH'),
-                'cert': config.get('mysql', 'CERT_PATH'),
-                'key': config.get('mysql', 'KEY_PATH')
-            }
-        },
+        # 'OPTIONS': {
+        #     'ssl': {
+        #         'ca': config.get('mysql', 'CA_PATH'),
+        #         'cert': config.get('mysql', 'CERT_PATH'),
+        #         'key': config.get('mysql', 'KEY_PATH')
+        #     }
+        # },
     }
 }
 
