@@ -45,7 +45,6 @@ class BlockchainListener(object):
                         # if block_number - last_block_number > 1:
                         #     await self.fill_missing_blocks(last_block_number + 1, block_number - 1)
                         # last_block_number = block_number
-                        self.logger.info(f'{response}')
                         await asyncio.create_task(self.handle_new_block(response))
 
                         if self.should_cancel_subscription(response):
@@ -92,6 +91,7 @@ class BlockchainListener(object):
                 block_detail = await w3.eth.get_block(block_hash, full_transactions=True)
 
                 for transaction in block_detail['transactions']:
+                    self.logger.info(f"{transaction}")
                     transaction_data = {}
 
                     for key, value in transaction.items():
