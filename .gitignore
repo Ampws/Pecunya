@@ -7,3 +7,4 @@ config.ini
 test*
 /mysql_cert/*
 /logs/*
+!logs/.gitkeep
