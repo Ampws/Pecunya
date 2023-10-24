@@ -9,7 +9,7 @@ class EthereumTransaction(models.Model):
     # maxFeePerGas = models.BigIntegerField(null=True, blank=True)
     # maxPriorityFeePerGas = models.BigIntegerField(null=True, blank=True)
     hash = models.CharField(max_length=66, unique=True, primary_key=True)
-    input = models.TextField(null=True, blank=True)
+    input = models.CharField(max_length=10, null=True, blank=True, db_index=True)
     # nonce = models.BigIntegerField(null=True, blank=True)
     to = models.CharField(max_length=42, null=True, blank=True, db_index=True)
     # transactionIndex = models.PositiveIntegerField(null=True, blank=True)

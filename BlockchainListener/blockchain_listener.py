@@ -20,7 +20,7 @@ class BlockchainListener(object):
         self.subscription_id = None
         self.shutdown = asyncio.Event()
         self.EthereumTransaction = apps.get_model('BlockchainListener', 'EthereumTransaction')
-        self.EthereumTransaction_fields = [f.name for f in self.EthereumTransaction._meta.fields]
+        self.EthereumTransaction_fields = ['from' if f == 'tx_from' else f for f in self.EthereumTransaction_fields]
         self.logger.info(f'filter_fields: {self.EthereumTransaction_fields}')
 
     @retry(stop=stop_never, wait=wait_fixed(5))
