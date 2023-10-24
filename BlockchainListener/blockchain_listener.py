@@ -96,16 +96,15 @@ class BlockchainListener(object):
 
                     for key, value in transaction.items():
                         if key not in self.EthereumTransaction_fields:
-                            pass
+                            continue
                         elif key in ['hash', 'blockHash']:
                             transaction_data[key] = self.bytes_to_hex(value)
                         elif key == 'from':
                             transaction_data['tx_from'] = value
                         elif key == 'input':
-                            try:
-                                transaction_data[key] = value[:10]
-                            except:
-                                transaction_data[key] = value
+                            if not value:
+                                continue
+                            transaction_data[key] = self.bytes_to_hex(value[:4])
                         else:
                             transaction_data[key] = value
 
