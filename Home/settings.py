@@ -39,6 +39,24 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/0',
+        'OPTIONS': {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
 CSRF_COOKIE_SECURE = not DEBUG
 
 DATABASES = {
@@ -49,13 +67,13 @@ DATABASES = {
         'PASSWORD': config.get('mysql', 'PASSWORD'),
         'HOST': config.get('mysql', 'HOST'),
         'PORT': config.get('mysql', 'PORT'),
-        'OPTIONS': {
-            'ssl': {
-                'ca': config.get('mysql', 'CA_PATH'),
-                'cert': config.get('mysql', 'CERT_PATH'),
-                'key': config.get('mysql', 'KEY_PATH')
-            }
-        },
+        # 'OPTIONS': {
+        #     'ssl': {
+        #         'ca': config.get('mysql', 'CA_PATH'),
+        #         'cert': config.get('mysql', 'CERT_PATH'),
+        #         'key': config.get('mysql', 'KEY_PATH')
+        #     }
+        # },
     }
 }
 
@@ -70,31 +88,10 @@ EMAIL_HOST_PASSWORD = config.get('email', 'EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": "redis://127.0.0.1:6379/1",
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#         }
-#     }
-# }
-
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         }
-#     }
-# }
-
 INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'Auth',
-    # 'BlockchainListener.apps.BlockchainlistenerConfig',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django.contrib.auth',
@@ -104,6 +101,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
+    'Auth',
+    'BlockchainListener',
+    'CeleryTasks',
     'Telegram',
     # 'TokenInsight'
 ]
@@ -248,7 +248,7 @@ REST_FRAMEWORK = {
 }
 
 RPC_URLS = {
-    'RPC_BSC': config.get('quicknode', 'RPC_BSC').replace('https://', '').replace('wss://', ''),
+    'RPC_ERC': config.get('quicknode', 'RPC_ERC').replace('https://', '').replace('wss://', ''),
 }
 
 ROOT_URLCONF = 'Home.urls'
