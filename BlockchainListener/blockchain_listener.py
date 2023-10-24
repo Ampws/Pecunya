@@ -26,14 +26,14 @@ class BlockchainListener(object):
     @retry(stop=stop_never, wait=wait_fixed(5))
     async def listen_to_blockchain(self):
         self.logger.info("Started listening to the blockchain")
-        await self.fill_missing_blocks()
+        # await self.fill_missing_blocks()
 
         async with AsyncWeb3.persistent_websocket(WebsocketProviderV2(self.erc_rpc_wss)) as w3:
             self.subscription_id = await w3.eth.subscribe("newHeads")
             self.logger.info(f"Subscribed to new blocks with ID: {self.subscription_id}")
 
-            last_block_number = await self.get_last_block_number_from_db()
-            self.logger.info(f"Last block number in DB: {last_block_number}")
+            # last_block_number = await self.get_last_block_number_from_db()
+            # self.logger.info(f"Last block number in DB: {last_block_number}")
             
             unsubscribed = False
             while not unsubscribed:
@@ -42,11 +42,11 @@ class BlockchainListener(object):
                     async for response in w3.ws.listen_to_websocket():
                         block_number = response["result"]["number"]
                         self.logger.info(f"Received block number: {block_number}")
-                        if block_number - last_block_number > 1:
-                            await self.fill_missing_blocks(last_block_number + 1, block_number - 1)
-                        last_block_number = block_number
-                        # await asyncio.create_task(self.handle_new_block(response))
+                        # if block_number - last_block_number > 1:
+                        #     await self.fill_missing_blocks(last_block_number + 1, block_number - 1)
+                        # last_block_number = block_number
                         self.logger.info(f'{response}')
+                        await asyncio.create_task(self.handle_new_block(response))
 
                         if self.should_cancel_subscription(response):
                             unsubscribed = await w3.eth.unsubscribe(self.subscription_id)
@@ -101,6 +101,11 @@ class BlockchainListener(object):
                             transaction_data[key] = self.bytes_to_hex(value)
                         elif key == 'from':
                             transaction_data['tx_from'] = value
+                        elif key == 'input':
+                            try:
+                                transaction_data[key] = value[:10]
+                            except:
+                                transaction_data[key] = value
                         else:
                             transaction_data[key] = value
 
