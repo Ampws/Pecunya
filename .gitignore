@@ -6,5 +6,4 @@ config.ini
 **/migrations
 test*
 /mysql_cert/*
-/logs/*
-!logs/.gitkeep
+/logs

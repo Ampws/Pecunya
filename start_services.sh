@@ -1,6 +1,9 @@
 #!/bin/bash
 
+mkdir -p /logs
+
 start_celery() {
+    touch /logs/celery.log
     celery -A Home worker --loglevel=info --logfile=/logs/celery.log &
 }
 
