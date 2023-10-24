@@ -9,7 +9,7 @@ from web3 import AsyncWeb3, Web3
 from web3.providers import WebsocketProviderV2
 from web3.providers.async_rpc import AsyncHTTPProvider
 
-from ..redis_utils import redis_manager
+from redis_utils import redis_manager
 
 class BlockchainListener(object):
     def __init__(self):
