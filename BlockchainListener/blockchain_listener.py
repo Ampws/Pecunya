@@ -19,13 +19,15 @@ class BlockchainListener(object):
         self.semaphore = asyncio.Semaphore(3)
         self.subscription_id = None
         self.shutdown = asyncio.Event()
-        self.EthereumTransaction = apps.get_model('BlockchainListener', 'EthereumTransaction')
-        self.EthereumTransaction_fields = [f.name for f in self.EthereumTransaction._meta.fields]
-        self.logger.info(f'filter_fields: {self.EthereumTransaction_fields}')
+        self.EthereumTransaction = None
+        self.EthereumTransaction_fields = []
 
     @retry(stop=stop_never, wait=wait_fixed(5))
     async def listen_to_blockchain(self):
         self.logger.info("Started listening to the blockchain")
+        self.EthereumTransaction = apps.get_model('BlockchainListener', 'EthereumTransaction')
+        self.EthereumTransaction_fields = [f.name for f in self.EthereumTransaction._meta.fields]
+        self.logger.info(f'filter_fields: {self.EthereumTransaction_fields}')
         # await self.fill_missing_blocks()
 
         async with AsyncWeb3.persistent_websocket(WebsocketProviderV2(self.erc_rpc_wss)) as w3:
