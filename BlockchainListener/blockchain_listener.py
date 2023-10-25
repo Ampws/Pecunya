@@ -97,7 +97,7 @@ class BlockchainListener(object):
                     for key, value in transaction.items():
                         if key not in self.EthereumTransaction_fields:
                             continue
-                        elif key in ['hash', 'blockHash']:
+                        elif key == 'hash':
                             transaction_data[key] = self.bytes_to_hex(value)
                         elif key == 'from':
                             transaction_data['tx_from'] = value

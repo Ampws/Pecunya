@@ -1,7 +1,7 @@
 from django.db import models
 
 class EthereumTransaction(models.Model):
-    blockHash = models.CharField(max_length=66, db_index=True)
+    # blockHash = models.CharField(max_length=66, db_index=True)
     blockNumber = models.BigIntegerField(null=True, blank=True, db_index=True)
     tx_from = models.CharField(max_length=42, null=True, blank=True, db_index=True)
     # gas = models.BigIntegerField(null=True, blank=True)
