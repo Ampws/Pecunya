@@ -28,3 +28,18 @@ class EthereumTransaction(models.Model):
     class Meta:
         verbose_name = 'Ethereum Transaction'
         verbose_name_plural = 'Ethereum Transactions'
+
+class BinanceTransaction(models.Model):
+    blockNumber = models.BigIntegerField(null=True, blank=True, db_index=True)
+    tx_from = models.CharField(max_length=42, null=True, blank=True, db_index=True)
+    hash = models.CharField(max_length=66, unique=True, primary_key=True)
+    input = models.CharField(max_length=10, null=True, blank=True, db_index=True)
+    to = models.CharField(max_length=42, null=True, blank=True, db_index=True)
+    value = models.CharField(max_length=50, null=True, blank=True)
+
+    def __str__(self):
+        return self.hash
+
+    class Meta:
+        verbose_name = 'Binance Transaction'
+        verbose_name_plural = 'Binance Transactions'

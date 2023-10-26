@@ -12,9 +12,15 @@ from web3.providers.async_rpc import AsyncHTTPProvider
 from redis_utils import redis_manager
 
 class BlockchainListener(object):
-    def __init__(self):
-        self.erc_rpc_https = f'https://{settings.RPC_URLS.get("RPC_ERC")}'
-        self.erc_rpc_wss = f'wss://{settings.RPC_URLS.get("RPC_ERC")}'
+    def __init__(self, rpc):
+        if rpc == 'bsc':
+            self.rpc_https = f'https://{settings.RPC_URLS.get("RPC_BSC")}'
+            self.rpc_wss = f'wss://{settings.RPC_URLS.get("RPC_BSC")}'
+        elif rpc == 'eth':
+            self.rpc_https = f'https://{settings.RPC_URLS.get("RPC_ERC")}'
+            self.rpc_wss = f'wss://{settings.RPC_URLS.get("RPC_ERC")}'
+        else:
+            raise Exception(f'Invalid rpc: {rpc}')
         self.logger = logging.getLogger(__name__)
         self.semaphore = asyncio.Semaphore(3)
         self.subscription_id = None
@@ -28,7 +34,7 @@ class BlockchainListener(object):
         self.logger.info("Started listening to the blockchain")
         # await self.fill_missing_blocks()
 
-        async with AsyncWeb3.persistent_websocket(WebsocketProviderV2(self.erc_rpc_wss)) as w3:
+        async with AsyncWeb3.persistent_websocket(WebsocketProviderV2(self.rpc_wss)) as w3:
             self.subscription_id = await w3.eth.subscribe("newHeads")
             self.logger.info(f"Subscribed to new blocks with ID: {self.subscription_id}")
 
@@ -68,7 +74,7 @@ class BlockchainListener(object):
                 await asyncio.create_task(self.handle_new_block(block_data))
 
     async def fetch_block_data(self, block_number):
-        w3 = AsyncWeb3(AsyncHTTPProvider(self.erc_rpc_https))
+        w3 = AsyncWeb3(AsyncHTTPProvider(self.rpc_https))
         return await w3.eth.get_block(block_number, full_transactions=True)
 
     async def get_min_max_block_numbers_from_db(self):
@@ -87,7 +93,7 @@ class BlockchainListener(object):
             transactions_to_create = []
 
             if block_hash:
-                w3 = AsyncWeb3(AsyncHTTPProvider(self.erc_rpc_https))
+                w3 = AsyncWeb3(AsyncHTTPProvider(self.rpc_https))
                 block_detail = await w3.eth.get_block(block_hash, full_transactions=True)
 
                 for transaction in block_detail['transactions']:
@@ -126,5 +132,5 @@ class BlockchainListener(object):
 
     async def unsubscribe(self):
         if self.subscription_id:
-            async with AsyncWeb3(WebsocketProviderV2(self.erc_rpc_wss)) as w3:
+            async with AsyncWeb3(WebsocketProviderV2(self.rpc_wss)) as w3:
                 await w3.eth.unsubscribe(self.subscription_id)
